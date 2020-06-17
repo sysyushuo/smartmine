@@ -1,5 +1,7 @@
 # smartmine
 
+智慧矿山三维可视化平台
+
 ## Project setup
 ```
 npm install
