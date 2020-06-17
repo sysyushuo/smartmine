@@ -1,0 +1,23 @@
+{
+  "name": "smartmine",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve --port 9006",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "core-js": "^3.6.5",
+    "earthsdk": "^1.4.4",
+    "echarts": "^4.8.0",
+    "flv.js": "^1.5.0",
+    "moment": "^2.26.0",
+    "vue": "^2.6.11"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.4.0",
+    "@vue/cli-service": "~4.4.0",
+    "vue-template-compiler": "^2.6.11"
+  }
+}
