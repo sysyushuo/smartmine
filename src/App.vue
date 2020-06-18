@@ -1,16 +1,16 @@
 <template>
     <div id="app">
-        <MyEarth></MyEarth>
+        <router-view/>
     </div>
 </template>
 
 <script>
-    import MyEarth from './components/MyEarth.vue'
-
     export default {
         name: 'App',
         components: {
-            MyEarth
+        },
+        mounted() {
+            this.$router.push('/Login');
         }
     }
 </script>
