@@ -8,6 +8,9 @@ import ViewUI from 'view-design';
 import 'view-design/dist/styles/iview.css';
 import echart from 'echarts';
 import axios from 'axios';
+import dataV from '@jiaminghi/data-view'
+
+Vue.use(dataV)
 Vue.prototype.$echarts = echart;
 Vue.prototype.axios = axios;
 Vue.config.productionTip = false;
