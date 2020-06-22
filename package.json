@@ -13,6 +13,8 @@
     "echarts": "^4.8.0",
     "flv.js": "^1.5.0",
     "moment": "^2.26.0",
+    "sockjs-client": "^1.4.0",
+    "stompjs": "^2.3.3",
     "vue": "^2.6.11"
   },
   "devDependencies": {

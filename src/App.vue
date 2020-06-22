@@ -3,14 +3,28 @@
         <MyEarth></MyEarth>
     </div>
 </template>
-
 <script>
+    //sockjs ¿Í»§¶Ë
+    import SockJS from 'sockjs-client';
+    import Stomp from 'stompjs';
+    //µØÇò
     import MyEarth from './components/MyEarth.vue'
 
     export default {
         name: 'App',
+        data() {
+            return {
+                stompClient:'',
+            }
+        },
         components: {
             MyEarth
+        },
+        mounted() {
+
+        },
+        methods: {
+
         }
     }
 </script>

@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>菜鸟教程(runoob.com)</title>
+    <style>
+        html, body {
+            background:grey;
+        }
+        .star-bottom:before {
+            content: '';
+            position: absolute;
+            top: 150px;
+            left: 50px;
+            border-right: 16px solid transparent;
+            border-top: 16px solid red;
+            border-left: 16px solid transparent;
+        }
+
+        .star-bottom:after {
+            content: '';
+            position: absolute;
+            top: 150px;
+            left: 52px;
+            border-right: 14px solid transparent;
+            border-top: 14px solid #fff;
+            border-left: 14px solid transparent;
+        }
+    </style>
+</head>
+<body>
+    <div style="width:250px;height:150px;border:1px solid red;position: absolute;
+            top: 200px;
+            left: 200px;">
+        <div class="star-bottom"><p>测试</p></div>
+    </div>
+
+</body>
+</html>
