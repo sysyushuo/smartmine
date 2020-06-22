@@ -9,6 +9,8 @@
 <script>
     import ServerConfig from "@/config/ServerConfig.js"
 
+    import PopUpWindow from "./earth/lib/PopUpWindow";
+
     import MyTools from "./earth/MyTools.vue"
 
     export default {
@@ -157,6 +159,18 @@
                 }
             },
 
+            /**
+             * 把气泡弹窗添加到地图中----------cesium
+             * @param {any} popup   气泡弹窗
+             */
+            addPopUp: function (popup) {
+                popup.setViewer(this._cesiumViewer);
+                this._cesiumViewer._container.appendChild(popup.element);
+                popup.element.firstChild.lastChild.addEventListener('click', function () {
+                    popup.close();
+                });
+            },
+
             //加载围栏
             loadFences(fences) {
 
@@ -186,6 +200,19 @@
                     pinCamera.xbsjFromJSON(pinCameraConfig);
                     pinCamera.onclick = (eve) => {
                         console.log(eve);
+                        let position = eve.id.position.getValue();
+                        let html = "你好啊老伙计";
+                        if (!this.popup) {
+                            this.popup = new PopUpWindow(html, {
+                                position: position,
+                                title: "设备信息"
+                            });
+                            this.addPopUp(this.popup);
+                        } else {
+                            this.popup.setContent(html);
+                            this.popup.setPosition(position);
+                        }
+
                     };
                     this.entityCameras.push(pinCameraConfig["name"]);
                 }
