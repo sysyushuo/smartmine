@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <MyEarth></MyEarth>
+        <router-view/>
     </div>
 </template>
 <script>
@@ -25,6 +25,9 @@
         },
         methods: {
 
+        },
+        mounted() {
+            this.$router.push('/Login');
         }
     }
 </script>
@@ -34,7 +37,8 @@
     #app {
         height: 100%;
         width: 100%;
-        background: #0094ff;
+        vertical-align: middle;
+        text-align: center;
         margin: 0px;
         padding: 0px;
     }

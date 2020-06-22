@@ -15,7 +15,10 @@
     "moment": "^2.26.0",
     "sockjs-client": "^1.4.0",
     "stompjs": "^2.3.3",
-    "vue": "^2.6.11"
+    "view-design": "^4.2.0",
+    "vue": "^2.6.11",
+    "vue-router": "^3.3.4",
+    "vuex": "^3.4.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.4.0",
