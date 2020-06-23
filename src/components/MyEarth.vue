@@ -96,6 +96,8 @@
                 { x: 112.98461034321821, y: 34.75534223083444, h: 30 },
             ]);
 
+            this.loadFences();
+
 
         },
         methods: {
@@ -174,6 +176,109 @@
 
             //加载围栏
             loadFences(fences) {
+                let points = [
+                    {
+                        locationX: 112.98573922621196,
+                        locationY: 34.753915627561554,
+                        height: 0
+                    },
+                    {
+                        locationX: 112.98482404509652,
+                        locationY: 34.75384648617085,
+                        height: 0
+                    },
+                    {
+                        locationX: 112.98414114353282,
+                        locationY: 34.75388216150678,
+                        height: 0
+                    },
+                    {
+                        locationX: 112.9841033206198,
+                        locationY: 34.75388429059514,
+                        height: 0
+                    },
+                    {
+                        locationX: 112.98319784355301,
+                        locationY: 34.75374244536911,
+                        height: 0
+                    },
+                    {
+                        locationX: 112.98254922771406,
+                        locationY: 34.7538286422101,
+                        height: 0
+                    },
+                ]
+                //加载石桩
+                let instances = this._creatPointsInstances(
+                    points, 1
+                );
+                this.model_sticks = this._cesiumViewer.scene.primitives.add(
+                    new Cesium.ModelInstanceCollection({
+                        url: "./model/stoneblock.gltf",
+                        luminanceAtZenith: 0.2,
+                        instances: instances
+                    })
+                );
+
+                this.model_fences = this._cesiumViewer.entities.add(
+                    new Cesium.Entity()
+                );
+                this.model_fenceLine = this._cesiumViewer.entities.add(
+                    new Cesium.Entity()
+                );
+
+                for (var i = 0; i < points.length; i++) {
+                    if (i == points.length - 1) {
+                        return;
+                    }
+                    let lineHeights = [0.25, 0.5, 0.69];
+                    for (var j = 0; j < lineHeights.length; j++) {
+                        this._cesiumViewer.entities.add({
+                            parent: this.model_fenceLine,
+                            polyline: new Cesium.PolylineGraphics({
+                                show: true,
+                                positions:
+                                    Cesium.Cartesian3.fromDegreesArrayHeights([
+                                        points[i]["locationX"],
+                                        points[i]["locationY"],
+                                        lineHeights[j],
+                                        points[i + 1]["locationX"],
+                                        points[i + 1]["locationY"],
+                                        lineHeights[j],
+                                    ]),
+                                width: 3,
+                                material: Cesium.Color.GREY
+                            })
+                        });
+                    }
+
+
+
+                    //this._cesiumViewer.entities.add({
+                    //    parent: this.model_fences,
+                    //    polygon: {
+                    //        hierarchy: new Cesium.PolygonHierarchy(
+                    //            Cesium.Cartesian3.fromDegreesArrayHeights([
+                    //                points[i]["locationX"],
+                    //                points[i]["locationY"],
+                    //                points[i]["height"],
+                    //                points[i]["locationX"],
+                    //                points[i]["locationY"],
+                    //                0.7,
+                    //                points[i + 1]["locationX"],
+                    //                points[i + 1]["locationY"],
+                    //                0.7,
+                    //                points[i + 1]["locationX"],
+                    //                points[i + 1]["locationY"],
+                    //                points[i + 1]["height"]
+                    //            ])
+                    //        ),
+                    //        perPositionHeight: true,
+                    //        material: Cesium.Color.fromCssColorString("rgba(47,152,113,0.7)")
+                    //    }
+                    //});
+
+                }
 
             },
 
@@ -417,6 +522,30 @@
                     var height = cartographic.height;
                     console.log("[Lng=>" + lng + ",Lat=>" + lat + ",H=>" + height + "]");
                 }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
+            },
+
+            //创建点状的实例集合
+            _creatPointsInstances: function (arrayLocations, scale) {
+                let instances = [];
+
+                for (var i = 0; i < arrayLocations.length; i++) {
+                    let toPoint = Cesium.Cartesian3.fromDegrees(arrayLocations[i].locationX, arrayLocations[i].locationY, arrayLocations[i].height);
+                    let modelMatrix = Cesium.Transforms.headingPitchRollToFixedFrame(
+                        toPoint,
+                        new Cesium.HeadingPitchRoll(1.5, 0, 0)
+                    );
+                    if (scale) {
+                        Cesium.Matrix4.multiplyByUniformScale(
+                            modelMatrix,
+                            scale,
+                            modelMatrix
+                        );
+                    }
+                    instances.push({
+                        modelMatrix: modelMatrix
+                    });
+                }
+                return instances;
             },
 
 

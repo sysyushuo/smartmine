@@ -2,7 +2,7 @@
     <div class="main-container">
         <my-earth></my-earth>
         <main-header></main-header>
-        <div class="v-left">
+        <!--<div class="v-left">
             <dv-border-box-8 class="panel">
                 <dv-border-box-12>
                     <comm-title :title="'实时环境'"></comm-title>
@@ -26,7 +26,7 @@
             <dv-border-box-8 :reverse="true" style="width: 450px">dv-border-box-11</dv-border-box-8>
             <dv-border-box-8 :reverse="true" style="width: 450px">dv-border-box-11</dv-border-box-8>
             <dv-border-box-8 :reverse="true" style="width: 450px">dv-border-box-11</dv-border-box-8>
-        </div>
+        </div>-->
     </div>
 </template>
 <style scoped>
