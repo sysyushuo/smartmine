@@ -1,0 +1,41 @@
+﻿/*.popup-win:before {
+    content: '';
+    position: absolute;
+    top: 150px;
+    left: 50px;
+    border-right: 16px solid transparent;
+    border-top: 16px solid red;
+    border-left: 16px solid transparent;
+}*/
+
+.popup-win:after {
+    content: '';
+    position: relative;
+    top: 12px;
+    border-right: 14px solid transparent;
+    border-top: 14px solid #334ba5;
+    border-left: 14px solid transparent;
+}
+
+    .bgs1 {
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        text-align: left;
+        font-size: 16px;
+        color: #ffffff;
+        padding-left: 10px;
+        background-color: #1a33b1; /* 不支持线性的时候显示 */
+        background-image: linear-gradient(to right, #1a33b1, #3f56a9);
+        border-radius: 4px 4px 0px 0px;
+    }
+
+.bgs2 {
+    width: 100%;
+    min-height: 60px;
+    background-color: #334ba5;
+    padding: 10px;
+    color: #ffffff;
+    font-size: 16px;
+    border-radius: 0px 0px 4px 4px;
+}

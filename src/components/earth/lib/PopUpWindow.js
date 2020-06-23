@@ -7,19 +7,27 @@
 var PopUpWindow = function (htmlContent, option) {
     var opt = option ? option : {};
     opt.title = opt.title ? opt.title : "";
+    opt.width = opt.width ? opt.width : 200;
+    opt.height = opt.height ? opt.height : 100;
+
+    this.option = opt;
     this._viewer = null;
 
     var html =
-        '<div class="bgst" style="background-position: 1px 0px;width:323px;height:39px;  font-size:16px;color:#ffffff;padding-top: 6px;padding-bottom: 2px;padding-left: 10px; ">'
-        + '<span style = "position: absolute;left: 12px;top: 19px; " > ' + opt.title + '</span > '
-        + ' <span style="margin-top:10px;margin-right:10px;float:right;height:100%;width:20px;color:#ccc;cursor:pointer;font-size:16px;text-align:center">X</span>'
+        '<div class="bgs1">'
+        + '<img src="./img/camera.png" style="width:30px;height:30px;vertical-align: middle;">'
+        + '<span> ' + opt.title + '</span > '
+        + ' <span style="float:right;width:30px;margin-right:5px;color:#ccc;cursor:pointer;font-size:16px;text-align:center">X</span>'
         + '</div>'
-        + "<div class='bgs2' style='position:relative;width:313px; ;padding:10px;color:#ffffff;font-size:16px;border-top: 1px solid #gray;'><span class='contentsinfo'>"
-        + htmlContent +
-        '</span></div>'
-        + "<div class='bgs3' style='width: 333px; height: 16px'></div>";
+        + "<div class='bgs2'>"
+        + "<span class='contentsinfo'>" + htmlContent + '</span>'
+        + '</div>';
+    //+ "<div class='bgs3' style='width: 333px; height: 16px'></div>";
     this.element = document.createElement('div');
+    this.element.className = "popup-win";
     this.element.style.position = "absolute";
+    this.element.style.width = opt.width + "px";
+    this.element.style.height = opt.height + "px";
     this.element.innerHTML = html;
 
     this._worldPosition = null;
@@ -41,8 +49,8 @@ PopUpWindow.prototype.setPosition = function (position) {
     }
     var canvasPosition = Cesium.SceneTransforms.wgs84ToWindowCoordinates(this._viewer.scene, position);
     if (Cesium.defined(canvasPosition)) {
-        that.element.style.top = canvasPosition.y + 10 + 'px';
-        that.element.style.left = canvasPosition.x - 85 + 'px';
+        that.element.style.top = canvasPosition.y - this.option.height * 2 + 'px';
+        that.element.style.left = canvasPosition.x - this.option.width / 2 + 'px';
         that.show();
     }
     this._worldPosition = position;

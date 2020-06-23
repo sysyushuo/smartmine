@@ -9,6 +9,7 @@
 <script>
     import ServerConfig from "@/config/ServerConfig.js"
 
+    import "./earth/lib/myearth.css";
     import PopUpWindow from "./earth/lib/PopUpWindow";
 
     import MyTools from "./earth/MyTools.vue"
@@ -86,8 +87,8 @@
 
             //加载业务信息
             this.loadCameras([
-                { x: 112.98421034321821, y: 34.75524223083444, h: 30 },
-                { x: 112.98441034321821, y: 34.75534223083444, h: 30 },
+                { x: 112.98421034321821, y: 34.75524223083444, h: 0 },
+                { x: 112.98441034321821, y: 34.75534223083444, h: 0 },
             ]);
 
             this.loadCars([
@@ -194,7 +195,8 @@
                         "xbsjType": "Pin",
                         "position": pos,
                         "show": true,
-                        "imageUrl": "./img/camera.png"
+                        "imageUrl": "./img/camera5.png",
+                        "scale": 0.12
                     }
                     let pinCamera = new XE.Obj.Pin(this._earth);
                     pinCamera.xbsjFromJSON(pinCameraConfig);
@@ -235,7 +237,8 @@
                         "xbsjType": "Pin",
                         "position": pos,
                         "show": true,
-                        "imageUrl": "./img/car.png"
+                        "imageUrl": "./img/car5.png",
+                        "scale": 0.12
                     }
                     let pinCar = new XE.Obj.Pin(this._earth);
                     pinCar.xbsjFromJSON(pinCarConfig);
@@ -362,7 +365,8 @@
                         "name": 'temp_play_car',
                         "xbsjType": "Pin",
                         "position": xbsjPositions[0],
-                        "imageUrl": "./img/car.png"
+                        "imageUrl": "./img/car4.png",
+                        "scale": 0.12
                     },
                 }
                 this._earth.sceneTree.root.children.push(pinCarConfig);
